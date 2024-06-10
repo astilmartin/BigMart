@@ -72,8 +72,8 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Purchase</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="#" class="dropdown-item">Cart</a>
-                                    <a href="#" class="dropdown-item">Checkout</a>
+                                    <a href="{% url 'cartpage' %}" class="dropdown-item">Cart</a>
+                                    <a href="{% url 'checkout_page' %}" class="dropdown-item">Checkout</a>
 
                                 </div>
                             </div>
@@ -1064,13 +1064,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>BigMart</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 my-auto text-center text-md-end text-white">
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        Designed By <a class="border-bottom" href="#">Astil Martin</a> Distributed By <a class="border-bottom" href="{% url 'home' %}">BigMart</a>
                     </div>
                 </div>
             </div>

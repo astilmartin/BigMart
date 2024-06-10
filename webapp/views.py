@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from Backend.models import productdb, categorydb
-from webapp.models import contactdb, registerdb, cartdb
+from webapp.models import contactdb, registerdb, cartdb, paymentdb
 
 
 # Create your views here.
@@ -111,9 +111,9 @@ def cartpage(request):
     for d in data:
         total=total+d.TotalPrice
     if total>500:
-        delivery_charge=0
-    else:
         delivery_charge=50
+    else:
+        delivery_charge=100
     final=total+delivery_charge
     return render(request,"cart.html",{'cat':cat,'data':data,'total':total,'delivery_charge':delivery_charge,'final':final})
 
@@ -126,4 +126,34 @@ def delete_item(req,pid):
 
 def user_login_page(request):
     return render(request,"userlogin.html")
+
+def checkout_page(request):
+    data = cartdb.objects.filter(Username=request.session['Username'])
+    cat = categorydb.objects.all()
+    total = 0
+    for d in data:
+        total = total + d.TotalPrice
+    if total > 500:
+        delivery_charge = 50
+    else:
+        delivery_charge = 100
+    final = total + delivery_charge
+    return render(request,"checkout.html",{'cat':cat,'data':data,'total':total,'delivery_charge':delivery_charge,'final':final})
+
+
+def payment_page(request):
+    return render(request,"payment.html")
+
+def save_payment(request):
+    if request.method=="POST":
+        us=request.POST.get('user')
+        ad=request.POST.get('address')
+        to=request.POST.get('town')
+        co=request.POST.get('country')
+        zi=request.POST.get('zip')
+        mo=request.POST.get('mobile')
+        em=request.POST.get('email')
+        obj=paymentdb(Username=us,Address=ad,Town=to,Country=co,Postcode=zi,Mobile=mo,Email=em)
+        obj.save()
+        return redirect(payment_page)
 

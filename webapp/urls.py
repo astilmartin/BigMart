@@ -17,6 +17,9 @@ urlpatterns=[
     path('userlogout/',views.userlogout,name="userlogout"),
     path('save_cart/',views.save_cart,name="save_cart"),
     path('cartpage/',views.cartpage,name="cartpage"),
+    path('checkout_page/',views.checkout_page,name="checkout_page"),
     path('delete_item/<int:pid>/', views.delete_item, name="delete_item"),
+    path('payment_page', views.payment_page, name="payment_page"),
+    path('save_payment', views.save_payment, name="save_payment"),
 
 ]
